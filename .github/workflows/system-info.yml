@@ -1,15 +1,24 @@
 name: system-info
 on: workflow_dispatch
 jobs:
-  job1: 
+  checkout:
     runs-on: ubuntu-latest
     steps:
-      - name: info
-        run: | 
-          echo "this is durgaprasad"
-          echo "here i am"
-          date
-          hostname
-          free -m
-        
-  
+      - name: runner
+        run: echo "checking..."
+  build: 
+    runs-on: 
+    steps:
+      - name: building
+        run: echo "building..."
+  test:
+    runs-on: 
+    needs: build
+    steps:
+      - name: testing
+        run: echo "test cases...."
+  deploy:
+    runs-on: 
+    steps:
+      - name: deploy
+        run: echo "deploying app"
