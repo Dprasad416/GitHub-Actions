@@ -11,7 +11,7 @@ jobs:
         if: github.ref_name == 'feature' && github.event_name == 'push'
         steps: 
             - name: Quality check
-              run: echo "Checking the code Quality"
+              run: echo "Checking the code quality"
     deploy-dev:
         runs-on: ubuntu-latest
         if: github.ref_name == 'dev' && github.event_name == 'push'
