@@ -1,0 +1,26 @@
+name:
+on: 
+    push: 
+        branches:
+            - main
+            - dev
+            - feature/**
+jobs: 
+    sonar:
+        runs-on: ubuntu-latest
+        if: startsWith(github.ref_name, 'feature/') && github.event_name == 'push'
+        steps: 
+            - name: Quality check
+              run: echo "Quality checking the code"
+    deploy-to-dev:
+        runs-on: ubuntu-latest
+        if: github.ref_name == 'dev' && github.event_name == 'push'
+        steps: 
+            - name: Deploy to dev
+              run: echo "Deploying to dev environment"
+    deploy-to-main:
+        runs-on: ubuntu-latest
+        if: github.ref_name == 'main' && github.event_name == 'push'
+        steps: 
+            - name: Deploy to main
+              run: echo "Deploying to main environment"
