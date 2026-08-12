@@ -8,7 +8,7 @@ on:
 jobs: 
     sonar:
         runs-on: ubuntu-latest
-        if: startsWith(github.ref_name, 'feature/') && github.event_name == 'push'
+        if: startsWith(github.ref_name, 'feature') && github.event_name == 'push'
         steps: 
             - name: Quality check
               run: echo "Checking the code Quality"
