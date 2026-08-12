@@ -24,3 +24,17 @@ jobs:
         steps: 
             - name: Deploy to main
               run: echo "Deploying to main environment"
+    success-notification:
+        needs: [sonar, deploy-dev, deploy-main]
+        runs-on: ubuntu-latest
+        if: always() && !failure()
+        steps: 
+            - name: Notify success
+              run: echo "All jobs completed successfully"
+    failure-notification:
+        needs: [sonar, deploy-dev, deploy-main]
+        runs-on: ubuntu-latest
+        if: failure()
+        steps: 
+            - name: Notify failure
+              run: echo "One or more jobs failed"
